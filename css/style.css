@@ -21,9 +21,9 @@ body
     position: relative;
     top: 40px;
     width: 720px;
-    height: 360px;
+    height: 340px;
     margin: auto;
-    border-radius: 6px;
+    border-radius: 6px 6px 0px 0px;
     background-color: #003636;
 }
 
@@ -63,26 +63,53 @@ body
     -o-user-select:none;
 }
 
+#Submit
+{
+    position: relative;
+    top: 40px;
+    margin: auto;
+    width: 720px;
+    height: 40px;
+    background-color: #003636;
+    color: white;
+    border-radius: 0px 0px 10px 10px;
+    padding-top: 10px;
+    font-size: 29px;
+    transition-duration: 300ms;
+    -moz-user-select: none; 
+    -webkit-user-select: none; 
+    -ms-user-select:none; 
+    user-select:none;
+    -o-user-select:none;
+}
+
+#Submit:hover
+{
+    background-color: #004848;
+}
+
+#Submit:active
+{
+    background-color: #006060;
+}
+
 #D_1_N_0, #D_2_N_0, #D_3_N_0
 {
-    position: absolute;
     top: -300px;
-    transition-duration: 300ms;
     z-index: 1;
+    transition-duration: 250ms;
 }
 
 #D_1_N_1, #D_2_N_1, #D_3_N_1
 {
-    position: absolute;
     top: 0px;
-    transition-duration: 300ms;
     z-index: 1;
+    transition-duration: 250ms;
 }
 
 #D_1_N_2, #D_2_N_2, #D_3_N_2
 {
-    position: absolute;
     top: 300px;
-    transition-duration: 300ms;
     z-index: 0;
+    transition-duration: 250ms;
 }
