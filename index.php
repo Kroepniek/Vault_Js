@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +6,27 @@
 	<link rel="icon" href="images/transparent_kon.png">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou" rel="stylesheet">
-	<script type="text/javascript" src="digitTranslate.js"></script>
+	<?php
+	require_once "connect.php";
+
+	$con = @new mysqli($host, $db_username, $db_password, $db_name);
+	
+	if ($con->connect_errno!=0)
+	{
+		echo '<script type="text/javascript">alert("Server error, try later.");</script>';
+	}
+	else
+	{
+		if ($result = @$con->query("SELECT * FROM Codes WHERE ID = 1"))
+		{
+			$record = $result->fetch_assoc();
+			$code = $record['Code'];
+			echo '<script type="text/javascript">correctCode = ('.$code.').toString();</script>';
+			$result->free_result();
+		}
+	}
+	?>
+	<script type="text/javascript" src="digit.js"></script>
 	<title>Vault Js</title>
 </head>
 <body>
@@ -32,10 +48,7 @@
 				<div id="D_3_N_2" class="digit">9</div>
 			</div>
 		</div>
-		<form action="" method="post">
-			<button id="Submit" type="submit" value="Unlock"></button>
-		</form>
-		<button id="Submit">Unlock</button>
+		<div id="Submit" onclick="CheckIfGood()">Unlock</div>
 	</div>
 </body>
 </html>
