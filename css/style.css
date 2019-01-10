@@ -1,0 +1,88 @@
+body
+{
+    background-color: #002424;
+    margin: 0px;
+    font-family: 'ZCOOL QingKe HuangYou', cursive;
+}
+
+#container
+{
+    position: relative;
+    top: 150px;
+    display: block;
+    margin: auto;
+    height: 450px;
+    width: 800px;
+    text-align: center;
+}
+
+#lock
+{
+    position: relative;
+    top: 40px;
+    width: 720px;
+    height: 360px;
+    margin: auto;
+    border-radius: 6px;
+    background-color: #003636;
+}
+
+#Dig_1, #Dig_2, #Dig_3
+{
+    float: left;
+    position: relative;
+    top: 30px;
+    width: 200px;
+    height: 300px;
+    margin: auto 20px;
+    text-align: center;
+    line-height: 280px;
+    border-radius: 4px;
+    font-size: 200px;
+    color: #fff;
+    background-color: #004848;
+    overflow: hidden;
+}
+
+.digit
+{
+    position: absolute;
+    width: 200px;
+    height: 300px;
+    text-align: center;
+    line-height: 280px;
+    border-radius: 4px;
+    font-size: 200px;
+    color: #fff;
+    background-color: #004848;
+    cursor: default;
+    -moz-user-select: none; 
+    -webkit-user-select: none; 
+    -ms-user-select:none; 
+    user-select:none;
+    -o-user-select:none;
+}
+
+#D_1_N_0, #D_2_N_0, #D_3_N_0
+{
+    position: absolute;
+    top: -300px;
+    transition-duration: 300ms;
+    z-index: 1;
+}
+
+#D_1_N_1, #D_2_N_1, #D_3_N_1
+{
+    position: absolute;
+    top: 0px;
+    transition-duration: 300ms;
+    z-index: 1;
+}
+
+#D_1_N_2, #D_2_N_2, #D_3_N_2
+{
+    position: absolute;
+    top: 300px;
+    transition-duration: 300ms;
+    z-index: 0;
+}
