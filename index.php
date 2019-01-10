@@ -7,6 +7,8 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou" rel="stylesheet">
 	<?php
+	$code = 123;
+
 	require_once "connect.php";
 
 	$con = @new mysqli($host, $db_username, $db_password, $db_name);
@@ -21,10 +23,11 @@
 		{
 			$record = $result->fetch_assoc();
 			$code = $record['Code'];
-			echo '<script type="text/javascript">correctCode = ('.$code.').toString();</script>';
 			$result->free_result();
 		}
 	}
+
+	echo '<script type="text/javascript">correctCode = ('.$code.').toString();</script>';
 	?>
 	<script type="text/javascript" src="digit.js"></script>
 	<title>Vault Js</title>
