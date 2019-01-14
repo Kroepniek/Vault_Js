@@ -33,6 +33,19 @@
 	<title>Vault Js</title>
 </head>
 <body>
+	<div id="counters">
+		<div>
+			<span>Correct: </span>
+			<span id="CorrectCodeCounter">0</span>
+		</div>
+		<div>
+			<span>Incorrect: </span>
+			<span  id="IncorrectCodeCounter">0</span>
+		</div>
+	</div>
+	<div id="MessageBox">
+		<span id="Message">Eldo kurwy.</span>
+	</div>
 	<div id="container">
 		<div id="lock">
 			<div id="Dig_1" onclick="ScrollNum(1)">

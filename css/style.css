@@ -16,6 +16,59 @@ body
     text-align: center;
 }
 
+#counters
+{
+    width: 200px;
+    height: 76px;
+    font-size: 30px;
+    color: #fff;
+    margin-left: 10px;
+    position: absolute;
+}
+
+#counters span
+{
+    width: 50%;
+    float: left;
+    margin-top: 5px;
+}
+
+#CorrectCodeCounter
+{
+    color: greenyellow;
+    text-align: right;
+}
+
+#IncorrectCodeCounter
+{
+    color: orangered;
+    text-align: right;
+}
+
+#MessageBox
+{
+    position: absolute;
+    top: -80px;
+    left: 30%;
+    margin: auto;
+    width: 770px;
+    height: 80px;
+    transition-duration: 1000ms;
+}
+
+#Message
+{
+    width: 750px;
+    display: inline-block;
+    color: #fff;
+    font-size: 18px;
+    font-family: 'Trebuchet MS', sans-serif;
+    text-align: center;
+    line-height: 30px;
+    padding: 10px 10px 0px 10px;
+    transition-duration: 1000ms;
+}
+
 #lock
 {
     position: relative;

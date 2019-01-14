@@ -1,4 +1,6 @@
 var Digs = [0, 0, 0];
+var correctCodeInserted = 0;
+var incorrectCodeInserted = 0;
 
 var topPos = [-300, 0, 300];
 var curTop = [[-300, 0, 300], [-300, 0, 300], [-300, 0, 300]];
@@ -101,18 +103,49 @@ function CheckIfGood()
         curIDs.forEach(Digit => {
             Digit.style.color = "#64FF64";
         });
+        correctCodeInserted++;
+        document.getElementById('CorrectCodeCounter').innerHTML = correctCodeInserted;
+        SendMessage("Correct Code! You logged in.", "#64FF64");
     }
     else
     {
         curIDs.forEach(Digit => {
             Digit.style.color = "#FF6464";
         });
+        incorrectCodeInserted++;
+        document.getElementById('IncorrectCodeCounter').innerHTML = incorrectCodeInserted;
+        SendMessage("Incorrect Code. Try again.", "#FF6464");
     }
 
-    setTimeout(function ()
+    setTimeout(function()
     {
         curIDs.forEach(Digit => {
             Digit.style.color = "#FFF";
         });
     }, 300);
+}
+
+function SendMessage(msg, color)
+{
+    var box = document.getElementById('MessageBox');
+    var message = document.getElementById('Message');
+    var unlockButton = document.getElementById('Submit');
+
+    message.innerHTML = msg;
+    unlockButton.removeAttribute("onclick");
+    unlockButton.innerHTML = '<img src="images/loading.gif" width="29px" height="29px"/>';
+
+    box.style.top = "10px";
+
+    setTimeout(function ()
+    {
+        box.style.top = "-80px";
+    }, 2550);
+
+    setTimeout(function ()
+    {
+        message.innerHTML = "";
+        unlockButton.setAttribute("onclick", "CheckIfGood();");
+        unlockButton.innerHTML = "Unlock";
+    }, 3550);
 }
