@@ -29,7 +29,7 @@
 
 	echo '<script type="text/javascript">correctCode = ('.$code.').toString();</script>';
 	?>
-	<script type="text/javascript" src="digit.js"></script>
+	<script type="text/javascript" src="js/digit.js"></script>
 	<title>Vault Js</title>
 </head>
 <body>

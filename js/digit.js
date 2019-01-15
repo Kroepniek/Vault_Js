@@ -10,7 +10,10 @@ var prevNum = [9, 9, 9];
 
 var canBePressed = true;
 
-function ScrollNum(curDig, dir)
+var correctSound = new Audio('sounds/correct.mp3');
+var incorrectSound = new Audio('sounds/incorrect.mp3');
+
+function ScrollNum(curDig)
 {
     if (canBePressed) 
     {
@@ -103,29 +106,92 @@ function CheckIfGood()
         curIDs.forEach(Digit => {
             Digit.style.color = "#64FF64";
         });
+
+        correctSound.play();
         correctCodeInserted++;
         document.getElementById('CorrectCodeCounter').innerHTML = correctCodeInserted;
-        SendMessage("Correct Code! You logged in.", "#64FF64");
+        SendMessage("Correct Code! You logged in.", true);
+        canBePressed = false;
+
+        var lockDiv = document.getElementById('lock');
+        var unlockButton = document.getElementById('Submit');
+
+        lockDiv.classList.remove('return');
+        lockDiv.classList.add('quit');
+        unlockButton.classList.add('reload-come');
+        unlockButton.classList.remove('reload-back');
     }
     else
     {
         curIDs.forEach(Digit => {
             Digit.style.color = "#FF6464";
         });
+
+        incorrectSound.play();
         incorrectCodeInserted++;
         document.getElementById('IncorrectCodeCounter').innerHTML = incorrectCodeInserted;
-        SendMessage("Incorrect Code. Try again.", "#FF6464");
-    }
+        SendMessage("Incorrect Code. Try again.", false);
 
-    setTimeout(function()
-    {
-        curIDs.forEach(Digit => {
-            Digit.style.color = "#FFF";
-        });
-    }, 300);
+        setTimeout(function()
+        {
+            curIDs.forEach(Digit => {
+                Digit.style.color = "#FFF";
+            });
+        }, 300);
+    }
 }
 
-function SendMessage(msg, color)
+function Reload()
+{
+    var curIDs = [
+        document.getElementById('D_1_N_0'), document.getElementById('D_2_N_0'), document.getElementById('D_3_N_0'),
+        document.getElementById('D_1_N_1'), document.getElementById('D_2_N_1'), document.getElementById('D_3_N_1'),
+        document.getElementById('D_1_N_2'), document.getElementById('D_2_N_2'), document.getElementById('D_3_N_2')
+    ];
+    var unlockButton = document.getElementById('Submit');
+    var lockDiv = document.getElementById('lock');
+
+    var beginValues = [1, 1, 1, 0, 0, 0, 9, 9, 9];
+
+    lockDiv.classList.add('return');
+    lockDiv.classList.remove('quit');
+    unlockButton.classList.add('reload-back');
+    unlockButton.classList.remove('reload-come');
+    unlockButton.setAttribute("onclick", "CheckIfGood();");
+    unlockButton.innerHTML = "Unlock";
+
+    curIDs.forEach(Digit => {
+        Digit.style.color = "#FFF";
+        Digit.style.opacity = "0";
+    });
+
+    setTimeout(function ()
+    {
+        curTop = [-300, -300, -300, 0, 0, 0, 300, 300, 300];
+
+        for (var i = 0; i < curIDs.length; i++)
+        {
+            curIDs[i].innerHTML = beginValues[i];
+            curIDs[i].style.top = curTop[i] + "px";
+        }
+    }, 300);
+
+    nextNum = [3, 3, 3];
+    prevNum = [9, 9, 9];
+    Digs = [0, 0, 0];
+
+    canBePressed = true;
+    
+    setTimeout(function ()
+    {
+        curIDs.forEach(Digit => {
+            Digit.style.opacity = "1";
+            curTop = [[-300, 0, 300], [-300, 0, 300], [-300, 0, 300]];
+        });
+    }, 600);
+}
+
+function SendMessage(msg, ok)
 {
     var box = document.getElementById('MessageBox');
     var message = document.getElementById('Message');
@@ -145,7 +211,15 @@ function SendMessage(msg, color)
     setTimeout(function ()
     {
         message.innerHTML = "";
-        unlockButton.setAttribute("onclick", "CheckIfGood();");
-        unlockButton.innerHTML = "Unlock";
+        if (ok)
+        {
+            unlockButton.innerHTML = '<img src="images/ok.png" width="29px" height="29px" align="top"/> Reload';
+            unlockButton.setAttribute("onclick", "Reload();");
+        }
+        else
+        {
+            unlockButton.setAttribute("onclick", "CheckIfGood();");
+            unlockButton.innerHTML = "Unlock";
+        }
     }, 3550);
 }

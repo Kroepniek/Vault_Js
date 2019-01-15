@@ -166,3 +166,62 @@ body
     z-index: 0;
     transition-duration: 250ms;
 }
+
+.quit {
+    transform-origin: 0% 0%;
+	animation: exit 1s both;
+}
+
+.return {
+    transform-origin: 0% 0%;
+	animation: return 1s both;
+}
+
+@keyframes exit 
+{
+    0% {
+        transform: rotateX(0deg);
+    }
+    100% {
+        transform: rotateX(-90deg);
+    }
+}
+
+@keyframes return 
+{
+    0% {
+        transform: rotateX(-90deg);
+    }
+    100% {
+        transform: rotateX(0deg);
+    }
+}
+
+.reload-come {
+	animation: reload-come 1.055s both;
+}
+
+.reload-back {
+	animation: reload-back 0.95s both;
+}
+
+@keyframes reload-come
+{
+    0% {
+        top: 40px;
+    }
+    100% {
+        top: -300px;
+    }
+}
+
+@keyframes reload-back
+{
+    0% {
+        top: -300px;
+    }
+    100% {
+        top: 40px;
+    }
+}
+  
