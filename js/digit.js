@@ -28,8 +28,9 @@ xmlhttp.onreadystatechange = function() {
         }
     }
 };
-xmlhttp.open("GET", "connect.php", true);
-xmlhttp.send();
+xmlhttp.open("POST", "connect.php", true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.send("q=true");
 
 function ScrollNum(curDig)
 {
