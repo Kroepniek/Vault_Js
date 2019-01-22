@@ -6,29 +6,6 @@
 	<link rel="icon" href="images/transparent_kon.png">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou" rel="stylesheet">
-	<?php
-	$code = 123;
-
-	require_once "connect.php";
-
-	$con = @new mysqli($host, $db_username, $db_password, $db_name);
-	
-	if ($con->connect_errno!=0)
-	{
-		echo '<script type="text/javascript">alert("Server error, try later.");</script>';
-	}
-	else
-	{
-		if ($result = @$con->query("SELECT * FROM Codes WHERE ID = 1"))
-		{
-			$record = $result->fetch_assoc();
-			$code = $record['Code'];
-			$result->free_result();
-		}
-	}
-
-	echo '<script type="text/javascript">correctCode = ('.$code.').toString();</script>';
-	?>
 	<script type="text/javascript" src="js/digit.js"></script>
 	<title>Vault Js</title>
 </head>

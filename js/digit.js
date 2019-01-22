@@ -8,10 +8,21 @@ var nums = [9, 0, 1, 2, 3, 4, 5, 6, 7, 8];
 var nextNum = [3, 3, 3];
 var prevNum = [9, 9, 9];
 
+var pass = "";
+
 var canBePressed = true;
 
 var correctSound = new Audio('sounds/correct.mp3');
 var incorrectSound = new Audio('sounds/incorrect.mp3');
+
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        pass = this.responseText;
+    }
+};
+xmlhttp.open("GET", "connect.php", true);
+xmlhttp.send();
 
 function ScrollNum(curDig)
 {
@@ -101,7 +112,7 @@ function CheckIfGood()
         document.getElementById('D_1_N_2'), document.getElementById('D_2_N_2'), document.getElementById('D_3_N_2')
     ];
 
-    if (Digs.join('') == correctCode) 
+    if (Digs.join('') == pass) 
     {
         curIDs.forEach(Digit => {
             Digit.style.color = "#64FF64";
