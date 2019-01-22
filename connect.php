@@ -6,13 +6,11 @@
 
 	$code = "123";
 
-	require_once "connect.php";
-
 	$con = @new mysqli($host, $db_username, $db_password, $db_name);
 	
 	if ($con->connect_errno!=0)
 	{
-		echo '<script type="text/javascript">alert("Server error, try later.");</script>';
+		echo "error";
 	}
 	else
 	{
